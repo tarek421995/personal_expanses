@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './widgets/user_transaction.dart';
 
 void main(List<String> args) {
   runApp(MyApp());
@@ -14,27 +15,42 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  // String titleInput;
+  // String amountInput;
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Flutter app'),
       ),
-      body: Column(
-        children: <Widget>[
-          Card(
-            color: Colors.blue,
-            child: Container(
-              child: Text('CHART'),
-              width: double.infinity,
-            ),
-            elevation: 5,
+      body: Container(
+        height: 5000,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            // mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                child: Card(
+                  child: Text('CHART'),
+                  color: Colors.blue,
+                  elevation: 5,
+                ),
+              ),
+              UserTransactions()
+            ],
           ),
-          Card(
-            child: Text('LIST OF TX'),
-          ),
-        ],
+        ),
       ),
     );
   }
